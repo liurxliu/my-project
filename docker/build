@@ -1,0 +1,2 @@
+docker build -f app/Dockerfile -t my/app ./app
+docker build -f node/Dockerfile -t my/node ./node

@@ -4,7 +4,7 @@
 @if(auth()->check())
 <question :auth-check="{{ auth()->check() }}" :data="{{ $question }}" v-cloak inline-template>
 @else
-<question v-cloak inline-template>
+<question :data="{{ $question }}" v-cloak inline-template>
 @endif
     <div class="container">
         <div class="cols">

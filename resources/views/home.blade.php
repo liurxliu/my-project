@@ -76,7 +76,7 @@
                     <topic-filter :topics="{{ $topics }}" :user="{{ auth()->user() }}"></topic-filter>
                     <div class="card">
                         <div class="card-header">
-                            Your topics<i class="material-icons" style="float: right;position: relative;bottom: 3px;" @click="editTopic">edit</i>
+                            Your topics<i class="material-icons" style="float: right;position: relative;bottom: 3px;" @click.prevent="editTopic">edit</i>
                         </div>
                         <div class="card-body">
                             <ul>

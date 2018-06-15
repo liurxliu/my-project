@@ -26822,10 +26822,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_textarea_autosize__ = __webpack_require__(473);
 
+
+
+
+
+
 window.moment = __WEBPACK_IMPORTED_MODULE_0_moment___default.a;
-
-
-
 window.Vue = __webpack_require__(474);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_js_modal___default.a, { dialog: true });
@@ -26861,6 +26863,14 @@ if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+if (window.location.hash && window.location.hash == '#_=_') {
+  window.location.href = '/';
+}
+
+if (window.location.pathname && window.location.href.split('#').length == 2) {
+  window.location.href = '/';
 }
 
 /**
@@ -73068,6 +73078,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['topics', 'user'],
@@ -73085,11 +73096,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$modal.hide('topicFilter');
 		},
 		addTopics: function addTopics() {
+			var _this = this;
+
 			axios.post('/' + this.user.name + '/topics', {
 				'ids': this.checkTopics
 			}).then(function (response) {
 				flash('Add new favorite topics.');
-				window.location = document.location.href;
+				_this.hide();
+				window.location.href = document.location.href;
 			});
 		}
 	}
@@ -73163,7 +73177,11 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "button",
-                { staticClass: "btn-block", on: { click: _vm.addTopics } },
+                {
+                  staticClass: "btn-block",
+                  staticStyle: { "margin-bottom": "0px", "margin-top": "30px" },
+                  on: { click: _vm.addTopics }
+                },
                 [_vm._v("Select")]
               )
             ],

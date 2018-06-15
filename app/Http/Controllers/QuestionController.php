@@ -29,7 +29,7 @@ class QuestionController extends Controller
 
         $question->increment('visits');
         // for relative questions.
-        $topics = $question->topics()->with(['questions' => $this->orderBy('answers_count')
+        $topics = $question->topics()->with(['questions' => $this->orderBy('answers_count', 20)
         ])->get();
 
         if (request()->wantsJson()) {
@@ -70,10 +70,10 @@ class QuestionController extends Controller
         return redirect($question->path());
     }
 
-    public function orderBy($field, $pattern = 'desc')
+    public function orderBy($field, $limit = 100, $pattern = 'desc')
     {
-        return function($query) use ($field, $pattern) {
-            return $query->orderBy($field, $pattern);
+        return function($query) use ($field, $pattern, $limit) {
+            return $query->orderBy($field, $pattern)->limit($limit);
         };
     }
 }

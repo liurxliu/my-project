@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\Question', 30)->create()->each(function ($question) {
+        factory('App\Question', 100)->create()->each(function ($question) {
         	factory('App\Answer', 10)->create(['question_id' => $question->id]);
         });
     }

@@ -6,7 +6,8 @@
 					<input type="checkbox" :id="topic.topic" :value="topic.id" v-model="checkTopics">
 					<label :for="topic.topic">{{ topic.topic }}</label>
 				</div>
-				<button class="btn-block" @click="addTopics">Select</button>
+
+				<button style="margin-bottom: 0px; margin-top: 30px;" class="btn-block" @click="addTopics">Select</button>
 			</div>
 
 		</modal>
@@ -40,7 +41,8 @@
 				})
 				.then(response => {
 					flash('Add new favorite topics.');
-					window.location = document.location.href;
+					this.hide();
+					window.location.href = document.location.href;
 				});
 			}
 		}

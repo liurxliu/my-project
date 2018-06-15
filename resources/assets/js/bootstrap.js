@@ -1,8 +1,10 @@
+
 import moment from 'moment';
-window.moment = moment;
 import InstantSearch from 'vue-instantsearch';
 import VModal from 'vue-js-modal';
-import VueTextareaAutosize from 'vue-textarea-autosize'
+import VueTextareaAutosize from 'vue-textarea-autosize';
+
+window.moment = moment;
 window.Vue = require('vue');
 
 Vue.use(VModal, { dialog: true });
@@ -38,6 +40,13 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
+if (window.location.hash && window.location.hash == '#_=_') {
+	window.location.href = '/';
+}
+
+if (window.location.pathname && window.location.href.split('#').length == 2) {
+	window.location.href = '/';
+}
 
 
 /**

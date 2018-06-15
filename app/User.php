@@ -57,6 +57,7 @@ class User extends Authenticatable
         $hasUser = self::where('email', $socialUser->getEmail())->first();
         if($hasUser) {
             \Auth::login($hasUser);
+
             return redirect('/');
         } else {
             $this->name = $socialUser->getName();
@@ -65,7 +66,7 @@ class User extends Authenticatable
             $this->avatar_path = $socialUser->getPhotoUrl();
             $this->save();
             \Auth::login($this);
-            return redirect('/');
+            return redirect()->route('home');
         }
     }
 }

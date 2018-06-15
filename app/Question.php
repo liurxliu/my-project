@@ -13,7 +13,7 @@ class Question extends Model
     use RecordActivity, Searchable;
 
 	protected $guarded = [];
-    protected $with = ['creator'];
+    protected $with = ['creator', 'topics:id,topic'];
     protected $appends = ['isSubscribed'];
 
     protected static function boot()
